@@ -1,0 +1,27 @@
+{
+    "name": "voidagency/factory-requirements-checker",
+    "description": "Check Factory requirements and give recommendations",
+    "keywords": ["distribution","configuration"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hamza Bahlaouane",
+            "email": "h.bahlaouane@void.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "bin": [
+        "bin/requirements-checker"
+    ],
+    "autoload": {
+        "psr-4": { "Factory\\Requirements\\": "src/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}
