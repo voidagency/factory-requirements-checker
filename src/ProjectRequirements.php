@@ -51,12 +51,12 @@ class ProjectRequirements extends RequirementCollection
             );
         }
 
-        $this->addRequirement(
-            is_dir($rootDir.'/'.$options['vendor-dir'].'/composer'),
-            'Vendor libraries must be installed',
-            'Vendor libraries are missing. Install composer following instructions from <a href="http://getcomposer.org/">http://getcomposer.org/</a>. '.
-            'Then run "<strong>php composer.phar install</strong>" to install them.'
-        );
+//        $this->addRequirement(
+//            is_dir($rootDir.'/'.$options['vendor-dir'].'/composer'),
+//            'Vendor libraries must be installed',
+//            'Vendor libraries are missing. Install composer following instructions from <a href="http://getcomposer.org/">http://getcomposer.org/</a>. '.
+//            'Then run "<strong>php composer.phar install</strong>" to install them.'
+//        );
 
         if (is_dir($cacheDir = $rootDir.'/'.$options['var-dir'].'/cache')) {
             $this->addRequirement(
