@@ -156,6 +156,7 @@ class FactoryRequirements extends RequirementCollection
         );
 
         $pingSites = [
+            'https://www.google.com/recaptcha/api/siteverify',
             'https://packagist.org',
             'https://repo.packagist.org',
             'https://api.github.com',
