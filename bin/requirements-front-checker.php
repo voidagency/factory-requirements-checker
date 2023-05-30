@@ -55,6 +55,11 @@ if (version_compare($yarnVersion, $requiredYarnVersion, '<')) {
     $errors[] = "Your Yarn version ($yarnVersion) is below the minimum required version ($requiredYarnVersion). Please upgrade Yarn before proceeding.";
 }
 
+// Check if Yarn can connect to the npm registry
+if (!yarn_can_connect_to_registry()) {
+    $errors[] = "Yarn is unable to connect to the npm registry.";
+}
+
 // Check if pm2 is installed and the version is greater than 5.x.x
 $pm2Version = trim(shell_exec('pm2 --version'));
 $requiredPm2Version = '5.0.0'; // Update this to the minimum required pm2 version
@@ -121,6 +126,7 @@ if (empty($errors)) {
     $factoryHelper->echo_title("Service Status", 'green');
     echo "- Node.js: Installed (Version: $nodeVersion)" . PHP_EOL;
     echo "- Yarn: Installed (Version: $yarnVersion)" . PHP_EOL;
+    echo "- Yarn can connect to npm registry: Yes" . PHP_EOL;
     echo "- pm2: Installed (Version: $pm2Version)" . PHP_EOL;
     echo "- redis-cli: Installed (Version: $redisVersion)" . PHP_EOL;
     echo "- cURL request to $endpoint success." . PHP_EOL;
@@ -154,4 +160,15 @@ function command_exists($command)
 function is_valid_url($url)
 {
     return filter_var($url, FILTER_VALIDATE_URL) !== false;
+}
+
+/**
+ * Checks if Yarn can connect to the npm registry.
+ *
+ * @return bool True if Yarn can connect to the npm registry, false otherwise.
+ */
+function yarn_can_connect_to_registry()
+{
+    $output = shell_exec('yarn config get registry');
+    return !empty($output);
 }
