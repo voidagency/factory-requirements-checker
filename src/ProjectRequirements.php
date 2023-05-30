@@ -10,7 +10,7 @@ class ProjectRequirements extends RequirementCollection
 {
     const REQUIRED_PHP_VERSION_3x = '5.5.9';
     const REQUIRED_PHP_VERSION_4x = '7.1.3';
-    const REQUIRED_PHP_VERSION_5x = '7.4.33';
+    const REQUIRED_PHP_VERSION_5x = '8.1';
 
     public function __construct($rootDir)
     {
