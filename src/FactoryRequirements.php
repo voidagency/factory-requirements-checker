@@ -148,11 +148,11 @@ class FactoryRequirements extends RequirementCollection
                 $memoryLimit = $this->getMemoryLimit();
 
                 // @todo: not sure if getMemoryLimit gonna always return 128M = 134217728
-                return $memoryLimit > 134217728;
+                return $memoryLimit > 268435456;
             },
             true,
-            'memory_limit should be greater than 128M in php.ini',
-            'Set "<strong>memory_limit</strong>" to be greater than "<strong>128M</strong>" in php.ini<a href="#phpini">*</a>.'
+            'memory_limit should be greater than 256M in php.ini',
+            'Set "<strong>memory_limit</strong>" to be greater than "<strong>256M</strong>" in php.ini<a href="#phpini">*</a>.'
         );
 
         $pingSites = [

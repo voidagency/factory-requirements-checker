@@ -1,4 +1,26 @@
 #!/usr/bin/env php
 <?php
 
-include('requirements-checker.php');
+use Factory\Requirements\Helpers\FactoryHelpers;
+
+if (file_exists($autoloader = __DIR__ . '/../../../autoload.php')) {
+    require_once $autoloader;
+} elseif (file_exists($autoloader = __DIR__ . '/../vendor/autoload.php')) {
+    require_once $autoloader;
+} elseif (!class_exists('Factory\Requirements\Requirement', false)) {
+    require_once dirname(__DIR__) . '/src/Helpers/FactoryHelpers.php';
+}
+
+$factoryHelper = new FactoryHelpers();
+
+$factoryHelper->echo_title('Start verification');
+
+$choose = readline("If u want to check requirements for Back-end Drupal (Enter 0), Front-end NextJs (Enter 1), Both (Enter 2) : ");
+
+if ($choose == 1 || $choose == 2) {
+    include('requirements-front-checker.php');
+}
+
+if ($choose == 0 || $choose == 2) {
+    include('requirements-checker.php');
+}
